@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/beca-service/beca.iml" filepath="$PROJECT_DIR$/beca-service/beca.iml" />
+      <module fileurl="file://$PROJECT_DIR$/beca-service/beca-commons/beca-commons.iml" filepath="$PROJECT_DIR$/beca-service/beca-commons/beca-commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/beca-service/beca-model/beca-model.iml" filepath="$PROJECT_DIR$/beca-service/beca-model/beca-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/beca-service/beca-persistence/beca-persistence.iml" filepath="$PROJECT_DIR$/beca-service/beca-persistence/beca-persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/beca-service.iml" filepath="$PROJECT_DIR$/.idea/beca-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/beca-service/beca-services/beca-services.iml" filepath="$PROJECT_DIR$/beca-service/beca-services/beca-services.iml" />
+      <module fileurl="file://$PROJECT_DIR$/beca-service/beca-web/beca-web.iml" filepath="$PROJECT_DIR$/beca-service/beca-web/beca-web.iml" />
+    </modules>
+  </component>
+</project>
