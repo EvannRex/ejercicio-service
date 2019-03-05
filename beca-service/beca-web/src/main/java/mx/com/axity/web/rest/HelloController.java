@@ -39,7 +39,7 @@ public class HelloController {
     public ResponseEntity<List<UserTO>> saveUsers(@RequestBody UserTO userTO) {
 
         this.IbecaFacade.saveUser(userTO);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET, produces = "application/json")
