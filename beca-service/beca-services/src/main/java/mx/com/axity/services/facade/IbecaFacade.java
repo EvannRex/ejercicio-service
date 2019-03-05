@@ -8,4 +8,8 @@ public interface IbecaFacade {
 
     int operation(int a,int b);
     List<UserTO> getAllUsers();
+    void saveUser(UserTO userTO);
+    UserTO searchById(int id);
+    void updateUser(UserTO userTO);
+    void deleteUser(int id);
 }

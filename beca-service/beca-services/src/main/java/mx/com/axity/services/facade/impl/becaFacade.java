@@ -27,15 +27,43 @@ public class becaFacade implements IbecaFacade {
         b = this.becaService.sub(c,a);
         int d = this.becaService.mult(b);
         return this.becaService.div(d);
-
     }
 
     @Override
-    public List<UserTO> getAllUsers() {
+    public List<UserTO> getAllUsers(){
         List<UserDO> userDOList= this.becaService.getAllUsers();
-        Type userTOType = new TypeToken<List<UserTO>>() {}.getType();
+        Type userTOType = new TypeToken<List<UserTO>>(){}.getType();
         List<UserTO> result=this.modelMapper.map(userDOList,userTOType);
 
         return result;
     }
+
+    @Override
+    public void saveUser(UserTO userTO) {
+        UserDO toSave= this.modelMapper.map(userTO,UserDO.class);
+
+        this.becaService.saveUser(toSave);
+    }
+
+    @Override
+    public UserTO searchById(int id) {
+        long lId=(long)id;
+        UserDO toShowDO= this.becaService.searchById(lId);
+        UserTO toShowTO= this.modelMapper.map(toShowDO,UserTO.class);
+        return toShowTO;
+    }
+
+    @Override
+    public void updateUser(UserTO userTO) {
+
+        UserDO toUpdate= this.modelMapper.map(userTO,UserDO.class);
+        this.becaService.updateUser(toUpdate);
+    }
+
+    @Override
+    public void deleteUser(int id) {
+        long lid=(long)id;
+        this.becaService.deleteUser(lid);
+    }
+
 }

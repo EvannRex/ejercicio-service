@@ -13,6 +13,9 @@ public interface IbecaService {
     int mult(int mult);
     int div(int div1);
 
-    public List<UserDO>getAllUsers();
-
+    List<UserDO>getAllUsers();
+    void saveUser(UserDO userDO);
+    UserDO searchById(long id);
+    void updateUser(UserDO userDO);
+    void deleteUser(Long id);
 }

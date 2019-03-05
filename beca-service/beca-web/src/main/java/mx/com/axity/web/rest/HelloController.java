@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sun.rmi.runtime.Log;
 
 import java.util.List;
 
@@ -34,23 +35,33 @@ public class HelloController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/user", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<List<UserTO>> saveUsers(@RequestBody UserTO userTO) {
-        LOG.info("user");
-        LOG.info(userTO.getAge());
-        LOG.info(userTO.getId());
-        LOG.info(userTO.getLastName());
 
+        this.IbecaFacade.saveUser(userTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<UserTO>> findUser(@RequestParam (value = "id") int id) {
-        LOG.info("User id");
-        LOG.info(id);
-        return new ResponseEntity<>( HttpStatus.OK);
+    public ResponseEntity<UserTO> findUser(@RequestParam (value = "id") int id) {
+        LOG.info("Se busca/users");
+        UserTO toShow= this.IbecaFacade.searchById(id);
+        return new ResponseEntity<>(toShow, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/user", method = RequestMethod.PUT, produces = "application/json")
+    public ResponseEntity<List<UserTO>> updateUsers(@RequestBody UserTO userTO) {
+
+        this.IbecaFacade.updateUser(userTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.DELETE, produces = "application/json")
+    public ResponseEntity<UserTO> deleteUser(@RequestParam (value = "id") int id) {
+        LOG.info("Se busca/users");
+        this.IbecaFacade.deleteUser(id);
+        return new ResponseEntity<>( HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity test() {
@@ -64,4 +75,5 @@ public class HelloController {
         int result =this.IbecaFacade.operation(5,10);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
 }

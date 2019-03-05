@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.function.IntToLongFunction;
 
 @Service
 public class becaServiceImpl implements IbecaService {
@@ -46,6 +47,31 @@ public class becaServiceImpl implements IbecaService {
 
     @Override
     public List<UserDO> getAllUsers() {
+
         return (List<UserDO>) this.userDAO.findAll();
+    }
+    @Override
+    public void saveUser(UserDO userDO) {
+        this.userDAO.save(userDO);
+    }
+
+    @Override
+    public UserDO searchById(long id) {
+        UserDO toShow= this.userDAO.findById(id).get();
+        return toShow;
+    }
+
+    @Override
+    public void updateUser(UserDO userDO) {
+        long toValidate= userDO.getId();
+
+        UserDO toUpdate= this.userDAO.findById(toValidate).get();
+        this.userDAO.save(toUpdate);
+
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        this.userDAO.deleteById(id);
     }
 }
